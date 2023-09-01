@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class SimpleDate {
 
@@ -51,4 +52,9 @@ public class SimpleDate {
         return this.year - other.year - yearRemoved;
     }
 
+    public int hashCode() {
+        int result = this.day * this.month * this.year * 3;
+
+        return result;
+    }
 }

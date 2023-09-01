@@ -18,5 +18,31 @@ public class LicensePlate {
     public String toString() {
         return country + " " + liNumber;
     }
+    
+
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof LicensePlate)) {
+            return false;
+        }
+
+        LicensePlate compared =  (LicensePlate) object;
+
+        if (this.liNumber.equals(compared.liNumber)
+            && this.country.equals(compared.country) ) {
+                return true;
+            }
+        return false;
+    }
+
+    public int hashCode() {
+        int hashCode = liNumber.hashCode();
+        hashCode += country.hashCode();
+
+        return hashCode;
+        
+    }
 
 }
