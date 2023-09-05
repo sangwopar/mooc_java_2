@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Warehouse {
 	private Map<String, Integer> priceMap;
@@ -17,14 +18,14 @@ public class Warehouse {
 
 	
 	public int price(String product) {
-		if (priceMap.containsKey(product)) {
+		if (!(priceMap.containsKey(product))) {
 			return -99;
 		}
 		return priceMap.get(product);
 	}
 
 	public int stock(String product) {
-		if (stockMap.containsKey(product)) {
+		if (!(stockMap.containsKey(product))) {
 			return 0;
 		}
 
@@ -32,17 +33,16 @@ public class Warehouse {
 	}
 
 	public boolean take(String product) {
-		if (stockMap.containsKey(product) || stockMap.get(product) == 0) {
+		if (!stockMap.containsKey(product) || stockMap.get(product) == 0) {
 			return false;
 		}
-		
 		stockMap.put(product, stockMap.get(product) - 1);
-
-		if (stockMap.get(product) == 0) {
-			return false;
-		}
 		return true;
 
+	}
+
+	public Set<String> products() {
+		return this.priceMap.keySet();
 	}
 	
 }
